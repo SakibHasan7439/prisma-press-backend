@@ -1,0 +1,35 @@
+tech stacks:
+express, typescript, prisma, postgreSQL
+
+features:
+user authentication,
+user profile,
+blog posts,
+comments & 
+admin reporting
+
+
+***user authentication should have:
+user registration,
+user login & 
+token refresh
+
+***login user should have:
+logged in user profile retrieval,
+profile update
+
+***post should have:
+create,
+listing,
+update,
+delete,
+search &
+stats
+
+***Comments should have:
+creation,
+retrieval,
+ownership checks & 
+moderation
+
+*** ROLE BASED ACCESS CONTROL FOR NORMAL AND ADMIN USERS ***
