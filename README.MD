@@ -6,3 +6,9 @@ steps to complete a project:
     5. Multi file prisma schema technique.
     6. Prisma Migration & client generation.
     7. Server & app setup. Demo API check & DB check
+
+*** process to add access and refresh token for login user:
+    In the service file, when the email and password match complete,
+    then we will send an access and refresh token to the user.
+
+*** send access and refresh token in cookie
