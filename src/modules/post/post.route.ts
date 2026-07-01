@@ -27,7 +27,7 @@ router.get(
 
 router.get("/:postId", postController.getPostById);
 
-router.put(
+router.patch(
     "/:postId",
     auth(Role.ADMIN, Role.AUTHOR, Role.USER), 
     postController.updatePost

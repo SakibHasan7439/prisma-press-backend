@@ -1,8 +1,23 @@
 import { prisma } from "../../lib/prisma";
-import { ICreatePostPayload } from "./comment.interface";
+import { ICreateCommentPayload } from "./comment.interface";
 
-const createCommentIntoDB = async() => {
+const createCommentIntoDB = async(payload: ICreateCommentPayload) => {
+    const post = await prisma.post.findUnique({
+        where: {
+            id: payload.postId
+        }
+    });
 
+    if(!post) {
+        throw new Error("Post not found");
+    }
+    
+    const result = await prisma.comment.create({
+        data: {
+            ...payload
+        }
+    });
+    return result;
 };
 
 const getCommentsByAuthorIdFromDB = async() => {

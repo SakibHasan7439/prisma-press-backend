@@ -1,10 +1,5 @@
-import { PostStatus } from "../../../generated/prisma/enums";
-
-export interface ICreatePostPayload {
-    title       :       string;
+export interface ICreateCommentPayload {
     content     :       string;
-    thumbnail   :       string;
-    isFeatured  :       boolean;
-    status      ?:      PostStatus;
-    tags        :       string[]
+    postId      :       string;
+    authorId    :       string;
 }
