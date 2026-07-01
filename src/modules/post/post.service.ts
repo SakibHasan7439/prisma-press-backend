@@ -27,8 +27,60 @@ const getAllPostsFromDB = async() => {
     return allPosts;
 };
 
-const getPostByIdFromDB = async() => {
+const getPostByIdFromDB = async(postId: string) => {
+    const singlePost = await prisma.post.findUnique({
+        where: {
+            id: postId
+        },
+    });
 
+    const updatePost = await prisma.post.update({
+        where: {
+            id: postId
+        },
+        data: {
+            views: {
+                increment: 1
+            }
+        },
+         include: {
+            author: {
+                select: {
+                    name: true,
+                }
+            },
+            comments: true
+        },
+    });
+    
+    return updatePost;
+};
+
+
+const getMyPostFromDB = async(authorId: string) => {
+    const myPosts = await prisma.post.findMany({
+        where: {
+            authorId
+        },
+
+        orderBy: {
+            createdAt: 'desc'
+        },
+        include: {
+            comments: true,
+            author: {
+                omit: {
+                    password: true,
+                }
+            },
+            _count: {
+                select: {
+                    comments: true,
+                }
+            }
+        }
+    });
+    return myPosts;
 };
 
 const getPostsStatsFromDB = async() => {
@@ -40,10 +92,6 @@ const updatePostIntoDB = async() => {
 };
 
 const deletePostFromDB = async() => {
-
-};
-
-const getMyPostFromDB = async() => {
 
 };
 
