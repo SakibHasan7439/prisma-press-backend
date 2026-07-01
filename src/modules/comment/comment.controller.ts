@@ -5,7 +5,7 @@ const createComment = catchAsync(async(req:Request, res:Response, next:NextFunct
 
 });
 
-const getComments = catchAsync(async(req:Request, res:Response, next:NextFunction) => {
+const getCommentsById = catchAsync(async(req:Request, res:Response, next:NextFunction) => {
     
 })
 
@@ -28,7 +28,7 @@ const deleteComments = catchAsync(async(req:Request, res:Response, next:NextFunc
 
 export const commentController = {
     createComment,
-    getComments,
+    getCommentsById,
     getCommentsByAuthorId,
     updateComments,
     updateCommentStatusByAdmin,
